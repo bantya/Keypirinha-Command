@@ -37,7 +37,7 @@ class Command(kp.Plugin):
         if len(input.groups()) == 1:
             command = ''.join(input.groups())
 
-        suggestion = [self._set_suggestion(command, command)]
+        suggestion = [self._set_suggestion(command)]
 
         self.set_suggestions(suggestion)
 
@@ -84,10 +84,10 @@ class Command(kp.Plugin):
             short_desc = desc
         )
 
-    def _set_suggestion(self, label, target):
+    def _set_suggestion(self, target):
         return self.create_item(
             category = self.ITEM_COMMAND,
-            label = '> ' + label,
+            label = '> ' + target,
             short_desc = 'Run \'' + target + '\' command',
             target = target,
             args_hint = kp.ItemArgsHint.FORBIDDEN,
