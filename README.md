@@ -3,15 +3,13 @@
 This is Command, a plugin for the
 [Keypirinha](http://keypirinha.com) launcher.
 
-**TODO:** write a brief description of this package. Optionally add a
-screenshot.
+This package provides an easy way to execute simple commands from launcher.
 
+![Command usage](./images/demo.gif "Command usage")
 
 ## Download
 
-**TODO:** indicate where the latest `.keypirinha-package` file can be
-downloaded. For example a URL to the `releases` list like:
-https://github.com/USERNAME/keypirinha-PACKAGE/releases
+Download the plugin file from [here](https://github.com/bantya/Keypirinha-Command/releases).
 
 
 ## Install
@@ -24,47 +22,72 @@ move it to the `InstalledPackage` folder located at:
   final path would look like
   `C:\Users\%USERNAME%\AppData\Roaming\Keypirinha\InstalledPackages`)
 
+## Configuration
+0. There is no configuration required. If you want you can proceed to **Step 1**.
+
+1. Open the `Command` config file.
+
+![Command config](./images/config.png "Command config")
+
+2. Set `close_cmd`.
+
+![Command files](./images/files.png "Command files")
+
+The possible values are:
+
+- `yes`: Close the command prompt after executing the command. 
+- `no`: Keep the command prompt open. (Default)
 
 ## Usage
 
-**TODO:** list the items, if any, inserted to the Catalog by the plugin(s) of
-this package. Some plugins only make suggestions, in which case a description of
-what kind of suggestions are to be expected by the user may help.
+![Command usage](./images/usage.png "Command usage")
 
+Invoke Keypirinha and put the command to be executed in following format:
+```
+> [command (can contain spaces)]
+
+
+e.g.
+
+> ping google.com -> This will open the command prompt and ping google.com
+```
+
+### Actions
+
+There are two actions available irrespective of the configuration.
+
+![Command actions](./images/actions.png "Command actions")
+
+- **Keep Open**: Do not close the prompt after running the command. 
+- **Close CMD**: Close the prompt after running the command.
 
 ## Change Log
 
-**TODO:** describe notable changes for each release. Below is a template for
-version 1.0.
-
 ### v1.0
 
-* Added foo item
-* Fixed bug that was doing bad things when item "bar" was selected
+* Initial release.
+* Added actions.
 
 
 ## License
 
-**TODO:** recommended section. Below is an example that goes with the default
-LICENSE file (MIT license). Do not forget to add your name in the `LICENSE`
-file!
-
-This package is distributed under the terms of the MIT license.
+MIT, that's it.
 
 
 ## Credits
 
-**TODO:** optional section.
+*Waiting for the first name to appear here.*
 
 
 ## Contribute
-
-**TODO:** optional section. Below is a template example, based on the one found
-in Keypirinha's Packages repository.
-
+Here is how to contribute:
 1. Check for open issues or open a fresh issue to start a discussion around a
    feature idea or a bug.
 2. Fork this repository on GitHub to start making your changes to the **dev**
    branch.
 3. Send a pull request.
 4. Add yourself to the *Contributors* section below (or create it if needed)!
+
+
+## Anything else?
+No, Thanks to all.
