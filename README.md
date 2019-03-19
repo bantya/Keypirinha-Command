@@ -7,23 +7,38 @@ This package provides an easy way to execute simple commands from launcher.
 
 ![Command usage](./images/demo.gif "Command usage")
 
-## Download
-
-Download the plugin file from [here](https://github.com/bantya/Keypirinha-Command/releases).
-
-
 ## Install
 
-Once the `Command.keypirinha-package` file is installed,
-move it to the `InstalledPackage` folder located at:
+There are two ways to install:
 
-* `Keypirinha\portable\Profile\InstalledPackages` in **Portable mode**
-* **Or** `%APPDATA%\Keypirinha\InstalledPackages` in **Installed mode** (the
-  final path would look like
-  `C:\Users\%USERNAME%\AppData\Roaming\Keypirinha\InstalledPackages`)
+1. Using **PackageControl**:
+
+    - Invoke Keypirinha and type `install package`.
+    - Click enter.
+    - Now search for package `Command`.
+    - Again press enter.
+
+    About [PackageContol](https://github.com/ueffel/Keypirinha-PackageControl).
+
+2. Manual:
+
+    Download the plugin file from [here](https://github.com/bantya/Keypirinha-Command/releases).
+
+    Once the `Command.keypirinha-package` file is downloaded,
+    move it to the `InstalledPackage` folder located at:
+
+    * `Keypirinha\portable\Profile\InstalledPackages` in **Portable mode**
+    * **Or** `%APPDATA%\Keypirinha\InstalledPackages` in **Installed mode** (the
+    final path would look like
+    `C:\Users\%USERNAME%\AppData\Roaming\Keypirinha\InstalledPackages`)
+
+**NOTE:** You may have to manually restart Keypirinha to see the package activated.
+    
+
+    
 
 ## Configuration
-0. There is no configuration required. If you want you can proceed to **Step 1**.
+0. There is no configuration required. If you want, you can proceed to **Step 1**.
 
 1. Open the `Command` config file.
 
