@@ -9,7 +9,7 @@ This plugin provides an easy way to execute simple commands from Keypirinha.
 | :-: |
 | *Command demo* |
 
-## Install
+## Install:
 
 There are two ways to install:
 
@@ -35,42 +35,36 @@ There are two ways to install:
 **NOTE:** You may have to manually restart Keypirinha to see the package activated.
 
 
-## Configuration
+## Configuration:
 
-0. There is no configuration required. If you want, you can proceed to **Step 1**.
-
-1. Open the `Command` config file.
-
-| ![Command config](./images/config.png "Command config") |
-| :-: |
-| *Command configuration menu* |
-
-2. Set `close_cmd` in `main` section.
-
-| ![Command files](./images/files.png "Command files") |
-| :-: |
-| *Command configuration files* |
-
-The possible values are:
-
-- `yes`: Close the command prompt after executing the command.
-- `no`: Keep the command prompt open. (Default)
+0. NO configuration is required.
 
 
-## Usage
+## Usage:
 
 Invoke Keypirinha and put the command to be executed in following format:
 ```
-[> sign] [command (can contain spaces)]
+[>] [command (can contain spaces)]
+-OR-
+[>>] [command (can contain spaces)]
 
 e.g.
 
-> ping google.com -> This will open the command prompt and ping google.com
+> echo 'Hello World'
+>> ping google.com
 ```
 
 | ![Command usage](./images/usage.png "Command usage") |
 | :-: |
 | *Command usage* |
+
+
+### Difference between > and >>:
+
+Running any command with `>>` will close the CMD after completion of the command.
+
+In case of `>`, CMD will be kept open!
+
 
 ### Actions
 
@@ -83,8 +77,16 @@ There are two actions available irrespective of the configuration.
 - **Keep Open**: Do not close the prompt after running the command.
 - **Close CMD**: Close the prompt after running the command.
 
+*NOTE: These actions are first preference, if applied to a command.*
 
-## Change Log
+
+## Change Log:
+
+### v1.1.0
+
+- Added >> (CMD close keyword).
+- Updated README.
+- Updated config file.
 
 ### v1.0.1
 

@@ -8,7 +8,7 @@ class Command(kp.Plugin):
 
     SECTION_MAIN = 'main'
 
-    REGEX_INPUT = r'\>\s(.+)'
+    REGEX_INPUT = r'^(>{1,2})\s(.+)'
 
     ITEM_COMMAND = kp.ItemCategory.USER_BASE + 1
 
@@ -20,8 +20,8 @@ class Command(kp.Plugin):
 
         actions = []
 
-        actions.append(self._set_action('keep_open', 'Keep Open', 'Do not close the prompt after running the command.'))
-        actions.append(self._set_action('close_cmd', 'Close CMD', 'Close the prompt after running the command.'))
+        actions.append(self._set_action('keep_open', 'Keep Open', 'Run the command and keep CMD open.'))
+        actions.append(self._set_action('close_cmd', 'Close CMD', 'Close CMD after running the command.'))
 
         self.set_actions(self.ITEM_COMMAND, actions)
 
@@ -34,10 +34,13 @@ class Command(kp.Plugin):
         if input is None:
             return None
 
-        if len(input.groups()) == 1:
-            command = ''.join(input.groups())
+        if len(input.groups()) != 2:
+            pass
+        else:
+            operator = input.group(1)
+            command = input.group(2)
 
-        suggestion = [self._set_suggestion(command)]
+        suggestion = [self._set_suggestion(operator + '@' + command)]
 
         self.set_suggestions(suggestion)
 
@@ -47,9 +50,11 @@ class Command(kp.Plugin):
 
         prompt = 'C:\\Windows\\System32\\cmd.exe'
 
-        if self.settings.get_bool('close_cmd', self.SECTION_MAIN, False) == False:
+        [operator, command] = self._split_target(item.target())
+
+        if operator == '>':
             close = '/k'
-        else:
+        elif operator == '>>':
             close = '/c'
 
         if action and action.name() == "keep_open":
@@ -61,7 +66,7 @@ class Command(kp.Plugin):
             try:
                 cmd = [prompt]
                 cmd.append(close)
-                cmd.append(item.target())
+                cmd.append(command)
                 subprocess.Popen(cmd, cwd = os.path.dirname(prompt))
             except Exception as e:
                 print('Exception: CMD - (%s)' % (e))
@@ -85,10 +90,17 @@ class Command(kp.Plugin):
         )
 
     def _set_suggestion(self, target):
+        [operator, command] = self._split_target(target)
+
+        if operator == '>':
+            close_msg = ''
+        elif operator == '>>':
+            close_msg = ' and close CMD.'
+
         return self.create_item(
             category = self.ITEM_COMMAND,
-            label = '> ' + target,
-            short_desc = 'Run \'' + target + '\' command',
+            label = operator + ' ' + command,
+            short_desc = 'Run \'' + command + '\' command' + close_msg,
             target = target,
             args_hint = kp.ItemArgsHint.FORBIDDEN,
             hit_hint = kp.ItemHitHint.IGNORE
@@ -96,3 +108,6 @@ class Command(kp.Plugin):
 
     def _load_settings(self):
         self.settings = self.load_settings()
+
+    def _split_target(self, target):
+        return target.split('@')
