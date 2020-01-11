@@ -77,7 +77,7 @@ There are two actions available irrespective of the configuration.
 - **Keep Open**: Do not close the prompt after running the command.
 - **Close CMD**: Close the prompt after running the command.
 
-*NOTE: These actions are first preference, if applied to a command.*
+*NOTE: These actions have first preference, if applied with a command.*
 
 
 ## Change Log:
